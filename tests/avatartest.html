@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+AVATAR TEST
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="css/chessboard.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans|Bungee+Inline|Luckiest+Guy" rel="stylesheet">
+    <script src="js/jquery-1.10.1.min.js"></script>
+    <style>
+    * {
+        border: 1px dotted blue;
+    }
+    img {
+        margin-right: 10px;
+        width: 100px;
+        float: left;
+    }
+    .avatarbox {
+
+
+        height: auto;
+        margin: auto;
+        padding: 10px;
+        margin: 10px;
+        box-shadow: -10px 10px 10px #666666;
+        border-radius: 20px;
+        /*font-family: 'Bubblegum sans';*/
+
+    }
+
+    .hintText {
+        padding-left: 20px;
+        margin-left: 20px;
+    }
+    .yellowborder {
+        border: 10px solid yellow;
+    }
+    .blueborder {
+        border: 10px solid blue;
+    }
+    .redborder {
+        border: 10px solid red;
+    }
+
+    .clear {
+        clear: both;
+        /*https://www.lockedownseo.com/parent-div-100-height-child-floated-elements/*/
+    }
+    </style>
+
+</head>
+
+<body>
+
+    <script>
+        function changeFont(input){
+            console.log("RRAAH");
+            console.log(input);
+            $("body").css("font-family",input);
+        }
+    </script>
+    <label>Choose your font
+        <select onclick=changeFont(value)>
+            <option value = 'Times new roman'>Times new roman</option>
+            <option value = 'Bubblegum Sans'>Bubblegum Sans</option>
+            <option value = 'Bungee Inline'>Bungee Inline</option>
+            <option value = 'Luckiest Guy'>Luckiest Guy</option>
+        </select>
+    </label>
+
+
+
+
+    <div id="scrollBarOnLeft" style="height:80vh; max-width:25vw;">
+        <div>
+            <div id="output">
+
+                <div class="avatarbox yellowborder ">
+                    <img src="img/happy-pawn.png" />
+                    <div class='hintText'>
+                        Great move! This is one of the best moves in the game. Be sure to protect this pawn with your life!
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="avatarbox yellowborder ">
+                    <img src="img/happy-pawn2.png" />
+                    <div class='hintText'>
+                        Great move! This is one of the best moves in the game. Be sure to protect this pawn with your life!
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="avatarbox redborder">
+                    <img src="img/angry-knight2.png" />
+                    <div class='hintText'>
+                        I know what you are trying to do. You want to get your rook out. But have you thought what you're going to do with that rook?
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="avatarbox blueborder">
+                    <img src="img/smug-king2.png" />
+                    <div class='hintText'>
+                        A rook works best when there is lots of space for it to move.
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="avatarbox blueborder">
+                    <img src="img/smug-king1.png" />
+                    <div class='hintText'>
+                        A rook works best when there is lots of space for it to move.
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="avatarbox blueborder">
+                    <img src="img/smug-king3.png" />
+                    <div class='hintText'>
+                        A rook works best when there is lots of space for it to move.
+                        <div class="clear"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+    * {
+        border: 1px dotted blue;
+        vertical-align: top;
+        overflow: hidden;
+    }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td style="height:80vh; max-height:80vh;">
+                <details open>
+                    <summary>Contents here will change in height</summary>
+                    <br><br><br>
+                </details>
+
+                <details id="FillMe" style="height:100%;overflow:auto;max-height:100%;" open>
+                    <summary> Last element does not show</summary>
+                    <script>
+                    var html = [];
+                    for (var i = 0; i < 100; i++) html.push("<br> data " + i);
+                    document.getElementById("FillMe").innerHTML += html.join('');
+                    </script>
+                    <br>
+                    Last line of data
+                </details>
+
+            </td>
+        </tr>
+
+    </table>
+</body>
+
+</html>

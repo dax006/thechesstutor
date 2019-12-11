@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="css/chessboard.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    
+</head>
+
+<body>
+
+
+    <!--div id="randomboard" style="width: 400px"></div>
+
+<script src='js/randomPlay.js'></script-->
+    <!--  adds a new board with random play!  :)  -->
+    
+
+    <table id="mainTable"><tr><td id="outputtd">
+            <h1>version: 0.1 (pre-alpha)</h1>
+        <div id="output" >OUTPUT</div>
+
+    </td><td>
+<center><div id="board"></div></center>
+    <!--input type="button" id="clearBtn" value="Clear" /-->
+    
+
+    </td><td id="optionstd" >
+<div style="height:20vh;">
+        <input type="button" id="blackComputer" value="Black" />
+
+
+        <input type="button" id="doMove" value="Force Move" />
+adf as 
+df a
+df a fda a saf dsaf f dsaf as  dasf asf 
+ad
+<br>
+<br>
+<br>
+<br>
+    </div>
+
+
+
+        <div id="engineoutput" class="scrollable" style="max-height:78vh;"></div> <!-- do not use document.write!  https://stackoverflow.com/questions/10873942/document-write-clears-page  -->
+
+    </td></tr></table>
+
+        <script src="js/json3.min.js"></script>
+        <script src="js/jquery-1.10.1.min.js"></script>
+        <script src="js/chessboard.js"></script>
+        <script src="js/chess.js"></script>
+        <script src="js/data.js"></script>
+        <script src='js/parseStockfish.js'></script>
+        <script src='js/eventHandlers.js'></script> <!-- should be after board is loaded since the buttons will affect the board variables -->
+        <script src='js/loadChessBoard.js'></script>
+        
+        <script src='js/main.js'></script>
+
+</body>
+
+</html>

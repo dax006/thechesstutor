@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139357947-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-139357947-1');
+</script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>The Chess Tutor Version 1.0.1</title>
+
+    
+    <link rel="stylesheet" href="css/chessboard.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans|Bungee+Inline|Luckiest+Guy" rel="stylesheet">
+</head>
+<style>
+
+@media all and (orientation:portrait){ 
+    #hints{
+        height:40vh;
+    }
+    #board{
+        height:50vh;
+        max-height:50vh;
+        overflow:hidden;
+        b//order:1 px dotted red;
+    }
+    #btns{
+        height: 10vh;
+    }
+}
+
+
+
+@media all and (orientation:landscape){
+   #hints, #board{
+        width:50%;
+    }
+    #options{
+        height:100%;
+    }
+
+
+}
+
+@media only all (max-width:600px){
+
+    #hints{
+        height:40vh;
+    }
+    #board{
+        height:50vh;
+    }
+    #btns{
+        height: 10vh;
+    }
+    
+}
+
+@media only all and (min-width:601px) and (max-width:1000px){
+
+    #hints, #board{
+        width:50%;
+    }
+    #options{
+        height:100%;
+    }
+
+
+}
+@media only all and (min-width:1001px) {
+    /*wider than 1000 pixels*/
+    #hints, #board, #options{
+        height:88vh;
+        max-height:88vh;
+    }   
+    #hints{
+        width:20%;
+    }
+    #options{
+        width:20%;
+    }
+    #board{
+        width:60%;
+    }
+    #options{
+        order:1; 
+    }
+    #btns{
+        order:2;
+    }
+    #hintTitle{
+        font-size: 200%;
+    }
+    #leftBtnFiller, #rightBtnFiller {
+        width:100%;
+    }
+    #about{
+        display:block;
+    }
+
+
+}
+
+</style>
+<body>
+
+    <!--div id="randomboard" style="width: 400px"></div>
+
+<script src='js/randomPlay.js'></script-->
+    <!--  adds a new board with random play!  :)  -->
+
+    <div id='everything'>
+        <div id = "hints" class="section" >
+        <div id="hintswrapper">
+
+            <div id="hintTitle" >
+                Hints
+            </div>
+
+            <!--  see   https://blogs.msdn.microsoft.com/kurlak/2015/02/20/filling-the-remaining-height-of-a-container-while-handling-overflow-in-css-ie8-firefox-chrome-safari/  -->
+            <div id = "outputwrapper2" >
+                <div id = "outputwrapper3" >
+                    <div id="output">
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+        <div id = "board" class="section">
+            <div id="centerwrapper"  >
+            <center>
+                <div id='chessboard' >
+                </div>
+                <div id="controls">
+                    <input type="button" id="beginningBtn" value="|<" />
+                    <input type="button" id="prevBtn" value="<" />
+                    <input type="button" id="nextBtn" value=">" />
+                    <input type="button" id="endBtn" value=">|" />
+                </div>
+            </center>
+        </div>
+        </div>
+    
+            <div id="btns" class='section'>
+                <div id="leftBtnFiller"></div>
+                <input type="button" id="undoBtn" value="Undo" title="Try a different move" />
+                <input type="button" id="hintBtn" value="Hint" title="Ask for a hint" />
+                <input type="button" id="confirmBtn" value="OK" title="Confirm your move"/>
+                <div id="rightBtnFiller"></div>
+                
+        </div>
+
+
+        <div id = "options" class="section">
+            <div id="optionswrapper">
+                <br>
+                <input type="button" id="startBtn" value="Start New Game" />
+                    <br>
+                    <br>
+                <details >
+                    <summary>Options</summary>
+                    
+                    <label title="The computer moves black pieces">Black is played by computer<input type="checkbox" id="blackComputer" /></label>
+                    <br>
+                    <label title="The computer moves white pieces">White is played by computer<input type="checkbox" id="whiteComputer" /></label>
+                    <br>
+                    <input type="button" id="forceMoveBtn" value="Force Move" />
+                    <br>
+                    <input type="button" id="refreshAdviceBtn" value="Refresh Advice" />
+                    <br>
+                    <label title="How well the computer plays">Difficulty
+                        <select id="selectDiff">
+
+                            <option value=0>0 (easiest)</option>
+                            <option value=1>1</option>
+                            <option value=2>2</option>
+                            <option value=3>3</option>
+                            <option value=4>4</option>
+                            <option value=5>5</option>
+                        </select>
+                    </label>
+
+                    <br>
+                    <label>
+                        Font
+                        <select onclick=changeFont(value)>
+                            <option value='Times new roman'>Times new roman</option>
+                            <option value='Bubblegum Sans' selected>Bubblegum</option>
+                            <option value='Bungee Inline'>Bungee</option>
+                            <option value='Luckiest Guy'>Luckiest Guy</option>
+                            <option value='Comic Sans MS'>Comic</option>
+                        </select>
+                    </label>
+                    <br>
+                    <label title="Your pieces under attack are highlighted red">Highlight under attack<input type="checkbox" id="highlightUnderAttack" /></label>
+                    <br>
+                    <label title="Opponent pieces you can attack are highlighted green">Highlight what you can attack<input type="checkbox" id="highlightCanAttack" /></label>
+                    <br>
+                    <label title="Confirm moves">Confirm moves<input type="checkbox" id="confirmMoves" value="Confirm moves" checked /></label>
+                    <br>
+                    <div id="engineoutputWrapper">
+                        <details id="engineoutputDetails">
+                            <summary> Stockfish Output </summary>
+                            <div id="engineoutput" class="scrollable fixedvw"></div> <!-- do not use document.write!  https://stackoverflow.com/questions/10873942/document-write-clears-page  -->
+
+                        </details>
+                    </div>
+
+                    <div id="skillsWrapper">
+                        <details id="skillDetails">
+                            <summary>Skills</summary>
+                            <div id="skills">
+
+                            </div>
+                        </details>
+                    </div>
+
+                </details>
+            </div>
+            
+
+        </div>
+        </div>
+
+    <div id="chessboard1" class="cb"></div>
+
+    
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+    <script src="js/chessboard.js"></script>
+    <script src="js/chess.js"></script>
+    <script src="js/data.js"></script>
+    <script src='js/parseStockfish.js'></script>
+    <script src='js/eventHandlers.js'></script> <!-- should be after board is loaded since the buttons will affect the board variables -->
+    <script src='js/visualFunctions.js'></script>
+
+    <script src='js/stockfishEval.js'></script>
+    <script src='js/main.js'></script>
+    
+
+    
+    <script>
+
+			
+	// if (jQuery.browser.mobile){
+	// 	alert("Halie Hutchison is super nice!")
+	// }
+	
+	</script>
+
+</body>
+
+</html>

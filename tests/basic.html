@@ -1,0 +1,36 @@
+<html>
+<body>
+<head>
+<link rel="stylesheet" href="css/chessboard.css" />
+<meta charset="utf-8" />
+</head>
+
+<div id="board" style="width: 400px;" ></div>
+<input type="button" id="doMove" value="Move" />
+<div id="engineoutput" style="line-height:1%;"></div>
+<script src="js/json3.min.js"></script>
+<script src="js/jquery-1.10.1.min.js"></script>
+<script src="js/chessboard.js"></script>
+<script src="js/chess.js"></script>
+<script src='js/parseStockfish.js'></script>
+
+<script>
+
+function callbackFunction(bestmoves){
+	console.log(bestmoves[0]);
+	game.move(bestmoves[0], {sloppy: true});  //update internal state
+	board.move(bestmoves[0]);  //redraw board
+}
+$('#doMove').on('click', function() {
+  getBestMoves(callbackFunction);  //must pass in the name of a function that will be the callback when moves are available
+});
+
+var board = ChessBoard('board',  {  //create the graphics, from chessboard.js
+	draggable: true,
+  position: 'start'
+});
+var game = new Chess();  //create chess.js internals to validate moves
+
+</script>
+</body>
+</html>

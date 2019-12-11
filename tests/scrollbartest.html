@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <style>
+        #scrollBarOnLeft {
+
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    overflow: auto;
+    overflow-x: hidden !important;
+    max-height:80vh;
+}
+#scrollBarOnLeft>div {
+    direction: ltr;
+}
+#scrollBarOnLeft>div>div {}
+#output {
+    max-height: 80vh;
+    text-align: left;
+    /*direction:rtl;*/
+    /*puts scroll bar on left but makes text look all funny*/
+}
+    .outputText{
+        margin-left:10px;
+        font-size: x-large;
+    }
+
+    .hintText {
+        padding-left: 20px;
+        margin-left: 20px;
+    }
+    .yellowborder {
+        border: 10px solid yellow;
+    }
+    .blueborder {
+        border: 10px solid blue;
+    }
+    .redborder {
+        border: 10px solid red;
+    }
+    .avatar {
+        margin-right: 10px;
+        width: 100px;
+        float: left;
+    }
+    .avatarbox {
+
+
+        height: auto;
+        margin: auto;
+        padding: 10px;
+        margin: 10px;
+        
+        border-radius: 20px;
+        /*font-family: 'Bubblegum sans';*/
+        /*box-shadow: -10px 10px 10px #666666;*/
+    }
+    .clear {
+        clear: both;
+        /*https://www.lockedownseo.com/parent-div-100-height-child-floated-elements/*/
+    }
+
+</style>
+</head>
+    <script src="js/jquery-1.10.1.min.js"></script>
+<body>
+
+    scrollbartest.html
+        <input type="button" value="click to add text" onclick="addtext()" />
+    <table>
+        <tr>
+            <td id="outerTd">
+                <div id="scrollBarOnLeft">
+                    <div id="LTR">
+                        <div id="output">
+                            <img src="img/avatar.png" style="width:100px; float:left; " />
+
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+
+
+</body>
+
+</html>
+
+<script>
+
+	function addtext() {
+		var str = "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble ";
+	    document.getElementById("output").innerHTML += avatarSays(str);
+	    //document.getElementById("output").innerHTML += str;
+
+	    	//SCROLL TO BOTTOM!@!!!
+
+	    	//https://stackoverflow.com/questions/270612/scroll-to-bottom-of-div?rq=1
+	    //objDiv = document.getElementById("scrollBarOnLeft"); //https://stackoverflow.com/questions/270612/scroll-to-bottom-of-div?rq=1
+	    // objDiv.scrollTop = objDiv.scrollHeight; //scroll to bottom.. not working.. hmm..
+	    
+
+	    //objDiv.scrollIntoView(false);	//nope
+
+
+		// var mydiv = $("#scrollBarOnLeft");
+		// mydiv.scrollTop(mydiv.prop("scrollHeight"));  //nope
+
+		$('#scrollBarOnLeft').stop().animate({
+		  scrollTop: $('#scrollBarOnLeft')[0].scrollHeight  //kinda works when debugging pane isnt open...
+		}, 800);
+
+	}
+
+	function avatarSays(str) {
+	    
+	    var html = '<div class="avatarbox yellowborder "><img class="avatar" src="img/happy-pawn.png" /><div class="hintText">' + str + '<div class="clear"></div></div></div>';
+	    return html;
+	}
+</script>
